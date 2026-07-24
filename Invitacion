@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invitación UPANA - Presentación de Proyecto</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes subtle-glow {
+            0%, 100% { box-shadow: 0 20px 60px rgba(30, 58, 138, 0.15), 0 0 1px rgba(30, 58, 138, 0.1); }
+            50% { box-shadow: 0 20px 80px rgba(59, 130, 246, 0.25), 0 0 30px rgba(59, 130, 246, 0.1); }
+        }
+
+        @keyframes pulse-line {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        @keyframes circuit-flow {
+            0% { background-position: 0% 0%; }
+            100% { background-position: 100% 100%; }
+        }
+
+        @keyframes data-stream {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        @keyframes border-glow {
+            0%, 100% { 
+                box-shadow: inset 0 0 20px rgba(59, 130, 246, 0.1), 0 0 20px rgba(59, 130, 246, 0.2);
+                border-color: rgba(59, 130, 246, 0.4);
+            }
+            50% { 
+                box-shadow: inset 0 0 30px rgba(59, 130, 246, 0.2), 0 0 40px rgba(59, 130, 246, 0.3);
+                border-color: rgba(59, 130, 246, 0.6);
+            }
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #0a0e27 0%, #0f1535 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            color: #1a1f3a;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Fondo con patrón de circuito digital */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(0deg, transparent 24%, rgba(59, 130, 246, 0.03) 25%, rgba(59, 130, 246, 0.03) 26%, transparent 27%, transparent 74%, rgba(59, 130, 246, 0.03) 75%, rgba(59, 130, 246, 0.03) 76%, transparent 77%, transparent),
+                linear-gradient(90deg, transparent 24%, rgba(59, 130, 246, 0.03) 25%, rgba(59, 130, 246, 0.03) 26%, transparent 27%, transparent 74%, rgba(59, 130, 246, 0.03) 75%, rgba(59, 130, 246, 0.03) 76%, transparent 77%, transparent);
+            background-size: 60px 60px;
+            pointer-events: none;
+            z-index: -1;
+            animation: circuit-flow 20s linear infinite;
+        }
+
+        /* Fondo con dots tecnológicos */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: radial-gradient(circle, rgba(59, 130, 246, 0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            background-position: 0 0;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* Contenedor principal */
+        .invitation-container {
+            max-width: 850px;
+            width: 100%;
+            background: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            padding: 70px 60px;
+            position: relative;
+            animation: slideIn 0.8s ease-out, subtle-glow 3s ease-in-out infinite;
+            border: 2px solid rgba(59, 130, 246, 0.3);
+            box-shadow: 0 20px 60px rgba(30, 58, 138, 0.15), 0 0 1px rgba(30, 58, 138, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .invitation-container:hover {
+            box-shadow: 0 30px 80px rgba(59, 130, 246, 0.25), 0 0 30px rgba(59, 130, 246, 0.15);
+            transform: translateY(-3px);
+            border-color: rgba(59, 130, 246, 0.5);
+        }
+
+        /* Líneas decorativas con efecto tech */
+        .invitation-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 40px;
+            right: 40px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.5), transparent);
+            animation: pulse-line 2s ease-in-out infinite;
+        }
+
+        .invitation-container::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 40px;
+            right: 40px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.5), transparent);
+            animation: pulse-line 2s ease-in-out infinite;
+        }
+
+        /* Accents decorativos con brillo */
+        .accent-line {
+            position: absolute;
+            width: 80px;
+            height: 2px;
+            background: linear-gradient(90deg, #3b82f6, #1e3a8a);
+            left: 30px;
+            top: 30px;
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.4);
+        }
+
+        .accent-line-right {
+            position: absolute;
+            width: 80px;
+            height: 2px;
+            background: linear-gradient(90deg, #1e3a8a, #3b82f6);
+            right: 30px;
+            bottom: 30px;
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.4);
+        }
+
+        /* Puntos tecnológicos en esquinas */
+        .tech-dot {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            background: #3b82f6;
+            border-radius: 50%;
+            box-shadow: 0 0 12px rgba(59, 130, 246, 0.6);
+            animation: pulse-line 2.5s ease-in-out infinite;
+        }
+
+        .tech-dot-1 { top: 25px; left: 25px; }
+        .tech-dot-2 { top: 25px; right: 25px; }
+        .tech-dot-3 { bottom: 25px; left: 25px; }
+        .tech-dot-4 { bottom: 25px; right: 25px; }
+
+        /* Logo section */
+        .logo-section {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .logo-box {
+            display: inline-block;
+            padding: 20px 40px;
+            border: 2px solid rgba(59, 130, 246, 0.3);
+            border-radius: 4px;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.05), rgba(30, 58, 138, 0.05));
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.15), inset 0 0 20px rgba(59, 130, 246, 0.08);
+            margin-bottom: 20px;
+            animation: border-glow 3s ease-in-out infinite;
+        }
+
+        .logo-box h1 {
+            color: #1e3a8a;
+            font-size: 32px;
+            font-weight: 700;
+            letter-spacing: 3px;
+            margin: 0;
+            text-transform: uppercase;
+            background: linear-gradient(135deg, #1e3a8a, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .logo-subtitle {
+            color: #475569;
+            font-size: 13px;
+            letter-spacing: 1px;
+            margin-top: 8px;
+            text-transform: capitalize;
+            font-weight: 500;
+        }
+
+        .university-motto {
+            font-size: 12px;
+            color: #64748b;
+            margin-top: 10px;
+            letter-spacing: 0.5px;
+            font-style: italic;
+            font-weight: 400;
+        }
+
+        /* Línea de datos digital */
+        .data-line {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #3b82f6, #1e3a8a, #3b82f6, transparent);
+            margin: 20px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .data-line::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -50%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
+            animation: data-stream 2s linear infinite;
+        }
+
+        /* Título principal */
+        .invitation-title {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .invitation-title h2 {
+            font-size: 28px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            color: #1e3a8a;
+            line-height: 1.3;
+            position: relative;
+        }
+
+        .invitation-title h2::before {
+            content: '◆';
+            display: inline-block;
+            margin-right: 12px;
+            color: #3b82f6;
+            font-size: 16px;
+        }
+
+        .invitation-title h2::after {
+            content: '◆';
+            display: inline-block;
+            margin-left: 12px;
+            color: #3b82f6;
+            font-size: 16px;
+        }
+
+        .invitation-title h3 {
+            font-size: 16px;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: capitalize;
+            color: #475569;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        /* Divisor elegante con tech */
+        .divider {
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #3b82f6, #1e3a8a, #3b82f6, transparent);
+            margin: 30px auto;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.3);
+        }
+
+        .divider::before,
+        .divider::after {
+            content: '●';
+            position: absolute;
+            top: -5px;
+            color: #3b82f6;
+            font-size: 8px;
+        }
+
+        .divider::before { left: -15px; }
+        .divider::after { right: -15px; }
+
+        /* Contenido principal */
+        .event-details {
+            position: relative;
+            z-index: 1;
+        }
+
+        .detail-section {
+            text-align: center;
+            margin-bottom: 35px;
+            padding: 25px;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(30, 58, 138, 0.08));
+            border: 2px solid rgba(59, 130, 246, 0.2);
+            border-radius: 4px;
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.1), inset 0 0 15px rgba(59, 130, 246, 0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .detail-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.1), transparent);
+            animation: data-stream 3s linear infinite;
+            pointer-events: none;
+        }
+
+        .detail-content {
+            font-size: 15px;
+            line-height: 1.8;
+            color: #1e3a8a;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+            position: relative;
+            z-index: 1;
+        }
+
+        .detail-row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            margin: 35px 0;
+            padding: 30px;
+            border-top: 2px solid rgba(59, 130, 246, 0.2);
+            border-bottom: 2px solid rgba(59, 130, 246, 0.2);
+            background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.05), transparent);
+            position: relative;
+        }
+
+        .detail-row::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 4px;
+            background: linear-gradient(180deg, transparent, #3b82f6, transparent);
+            box-shadow: 0 0 10px rgba(59, 130, 246, 0.4);
+        }
+
+        .detail-row::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: 0;
+            height: 100%;
+            width: 4px;
+            background: linear-gradient(180deg, transparent, #3b82f6, transparent);
+            box-shadow: 0 0 10px rgba(59, 130, 246, 0.4);
+        }
+
+        .date-time {
+            font-size: 42px;
+            font-weight: 700;
+            color: #1e3a8a;
+            letter-spacing: 1px;
+            text-shadow: 0 0 20px rgba(59, 130, 246, 0.2);
+            position: relative;
+            z-index: 1;
+        }
+
+        .time-label {
+            font-size: 12px;
+            color: #64748b;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-weight: 600;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Información de ubicación */
+        .location-info {
+            background: linear-gradient(135deg, rgba(30, 58, 138, 0.1), rgba(59, 130, 246, 0.12));
+            border-left: 4px solid #3b82f6;
+            border-top: 1px solid rgba(59, 130, 246, 0.2);
+            border-bottom: 1px solid rgba(59, 130, 246, 0.2);
+            padding: 25px;
+            margin: 35px 0;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 0 25px rgba(59, 130, 246, 0.15), inset 0 0 15px rgba(59, 130, 246, 0.08);
+            border-radius: 2px;
+        }
+
+        .location-info::before {
+            content: '';
+            position: absolute;
+            right: -1px;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background: linear-gradient(180deg, rgba(59, 130, 246, 0.5), transparent);
+        }
+
+        .location-info .icon-label {
+            font-size: 12px;
+            color: #1e3a8a;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .location-info .location-text {
+            font-size: 15px;
+            color: #475569;
+            line-height: 1.8;
+            letter-spacing: 0.5px;
+            font-weight: 500;
+        }
+
+        /* Dirección a invitados */
+        .directed-to {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 2px solid rgba(59, 130, 246, 0.2);
+            position: relative;
+            z-index: 1;
+        }
+
+        .directed-to-label {
+            font-size: 12px;
+            color: #1e3a8a;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .directed-to-text {
+            font-size: 15px;
+            color: #475569;
+            letter-spacing: 0.5px;
+            font-weight: 500;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .invitation-container {
+                padding: 50px 35px;
+            }
+
+            .accent-line,
+            .accent-line-right {
+                width: 50px;
+            }
+
+            .invitation-title h2 {
+                font-size: 24px;
+            }
+
+            .invitation-title h3 {
+                font-size: 14px;
+            }
+
+            .detail-row {
+                flex-direction: column;
+                gap: 15px;
+                padding: 20px;
+            }
+
+            .date-time {
+                font-size: 36px;
+            }
+
+            .logo-box h1 {
+                font-size: 26px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .invitation-container {
+                padding: 40px 25px;
+            }
+
+            .tech-dot {
+                width: 6px;
+                height: 6px;
+            }
+
+            .logo-box h1 {
+                font-size: 22px;
+                letter-spacing: 2px;
+            }
+
+            .invitation-title h2 {
+                font-size: 20px;
+            }
+
+            .invitation-title h3 {
+                font-size: 12px;
+            }
+
+            .detail-content {
+                font-size: 14px;
+            }
+
+            .date-time {
+                font-size: 32px;
+            }
+
+            .detail-section {
+                padding: 15px;
+            }
+
+            .location-info {
+                padding: 15px;
+            }
+
+            .invitation-title h2::before,
+            .invitation-title h2::after {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="invitation-container">
+        <div class="accent-line"></div>
+        <div class="accent-line-right"></div>
+        <div class="tech-dot tech-dot-1"></div>
+        <div class="tech-dot tech-dot-2"></div>
+        <div class="tech-dot tech-dot-3"></div>
+        <div class="tech-dot tech-dot-4"></div>
+
+        <!-- Logo y header -->
+        <div class="logo-section">
+            <div class="logo-box">
+                <h1>UPANA</h1>
+                <p class="logo-subtitle">Universidad Panamericana</p>
+                <p class="university-motto">"Sabiduría ante todo, adquiere sabiduría"</p>
+            </div>
+        </div>
+
+        <div class="data-line"></div>
+
+        <!-- Título de la invitación -->
+        <div class="invitation-title">
+            <h2>Invitación Especial</h2>
+            <h3>Presentación de Proyecto de Investigación</h3>
+        </div>
+
+        <div class="divider"></div>
+
+        <!-- Detalles del evento -->
+        <div class="event-details">
+            <div class="detail-section">
+                <p class="detail-content">
+                    Auditoría en Sistemas y Procedimientos &<br>
+                    Administración y Gestión de Riesgos
+                </p>
+            </div>
+
+            <div class="detail-row">
+                <span class="time-label">Sábado</span>
+                <span class="date-time">08</span>
+                <span class="time-label">Agosto de 2026</span>
+            </div>
+
+            <div class="detail-row">
+                <span class="time-label">Hora de Inicio</span>
+                <span class="date-time">09:00</span>
+                <span class="time-label">horas</span>
+            </div>
+
+            <!-- Información de ubicación -->
+            <div class="location-info">
+                <div class="icon-label">📍 Ubicación</div>
+                <div class="location-text">
+                    UPANA Sede Chimaltenango<br>
+                    Salón de Actos Central
+                </div>
+            </div>
+
+            <!-- Dirección a invitados -->
+            <div class="directed-to">
+                <div class="directed-to-label">Dirigido a:</div>
+                <div class="directed-to-text">
+                    Estimados Docentes e Invitados Especiales
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
